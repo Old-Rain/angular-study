@@ -1,18 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  // 该模块所拥有的的组件
+  declarations: [AppComponent],
+
+  // 该模块所依赖的模块
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+
+  // 该模块所拥有的的服务提供商
   providers: [],
-  bootstrap: [AppComponent]
+
+  // 指定根组件，只有跟模块需要配置该项。Angular创建它并插入index.html宿主页面
+  bootstrap: [AppComponent],
+
+  // 公开该模块其中的一部分，以便外部模块使用它（根模块就没有必要导出了）
+  exports: [],
 })
-export class AppModule { }
+export class AppModule {}
