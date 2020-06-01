@@ -123,4 +123,15 @@ export class AppComponent {
   tdDelete(i) {
     this.tdData.splice(i, 1)
   }
+
+  // 第三天
+  // 父向子传值
+  parentData = '我若不黑化，谁替我变强'
+  msiFn = () => console.log('MSI X470 GAMING PRO MAX')
+
+  // 子向父传值
+  childData = ''
+  howMuch(e) {
+    this.childData = e.price
+  }
 }

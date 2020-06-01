@@ -120,8 +120,20 @@
 <h3>todolist</h3>
 <input type="text" [(ngModel)]="tdVal" /><button (click)="tdAdd()">添加</button>
 <ul>
-  <li *ngFor="let item of tdData; let i = index; trackBy: tdTrackByName" (click)="tdStatusChange(i)">
+  <li
+    *ngFor="let item of tdData; let i = index; trackBy: tdTrackByName"
+    (click)="tdStatusChange(i)"
+  >
     <span class="{{ item.status ? 'done' : 'undone' }}">{{ item.name }}</span
     >&nbsp;<u style="color: blue;" (click)="tdDelete(i)">x</u>
   </li>
 </ul>
+
+<!-- 第三天 -->
+<!-- 父向子、子向父传值 -->
+<app-child
+  [msi]="msiFn"
+  [skill]="parentData"
+  (giveMoney)="howMuch($event)"
+></app-child>
+<p>儿子找爸爸要了{{ childData }}元</p>
