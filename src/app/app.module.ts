@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { ChildComponent } from './child/child.component'
 
+import { ABaseModule } from './a-base/a-base.module'
+
 @NgModule({
   // 该模块所拥有的的组件
   declarations: [AppComponent, ChildComponent],
 
   // 该模块所依赖的模块
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ABaseModule],
 
   // 该模块所拥有的的服务提供商
   providers: [],
