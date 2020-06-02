@@ -1,0 +1,8 @@
+<div class="wrap">
+  <app-b-child
+    [msi]="msiFn"
+    [skill]="parentData"
+    (giveMoney)="howMuch($event)"
+  ></app-b-child>
+  <p>儿子找爸爸要了{{ childData }}元</p>
+</div>

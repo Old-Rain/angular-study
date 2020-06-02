@@ -1,1 +1,118 @@
-<p>a-base works!</p>
+<div class="wrap">
+  <!-- 第一天 -->
+  <!-- 属性绑定 -->
+  <h2 class="{{ 'title' }}">{{ title }}</h2>
+  <a [href]="href">百度</a>
+  <input type="checkbox" [(ngModel)]="isChecked" /><span>{{ isChecked }}</span>
+  <br />
+
+  <!-- 事件绑定 -->
+  <a href="http://www.baidu.com" (click)="log($event)">事件绑定</a>
+  <br />
+
+  <!-- 双向绑定 -->
+  <!-- 
+  需要在模块文件中引入并使用“FromsModule”模块
+  只有表单类标签才能使用双向绑定
+ -->
+  <input type="text" [(ngModel)]="value" />
+  <span>{{ value }}</span>
+  <br />
+  <input type="text" [(ngModel)]="obj.name" />
+  <span>{{ obj.name }}</span>
+  <br />
+
+  <!-- 第二天 -->
+  <!-- 指令 -->
+  <!-- 
+  概念：Angular中，指令就是特殊的标签，或在html中添加一些特殊的标记，使html具备原本不具备的功能，从而增强html
+  属性绑定、事件绑定和双向绑定都是指令
+ -->
+
+  <!-- 
+  批量操作标签class
+  [ngClass]: { [propName]: boolean }
+  为true的属性将添加到标签的class中
+ -->
+  <h3 [ngClass]="classList">ngClass</h3>
+
+  <!-- 
+  只操作一个类的时候推荐使用
+  [class.prop]: boolean
+ -->
+  <p [class.bgGray]="bgGray">class.prop</p>
+
+  <!-- 
+  批量操作内联样式
+  [ngStyle]: { [propName]: string }
+ -->
+  <h4 [ngStyle]="styleList">我很绿，我很大</h4>
+
+  <!-- 
+  只操作一个style属性的时候
+  [style.styleProp]: string
+ -->
+  <p [style.color]="green">我更绿</p>
+
+  <!-- 
+  是否渲染dom
+  *ngIf: boolean
+ -->
+  <p *ngIf="isShow">Designer are all fools</p>
+  <!-- 通过display控制显示/隐藏 -->
+  <p [class.hidden]="isHidden">我隐藏了吗</p>
+
+  <!-- 
+  循环渲染
+  *ngFor="let item of prop: Array<any>; let i = index; let odd = odd"
+  可以拿到元素本身、索引号、索引是否奇数
+ -->
+  <p *ngFor="let item of colors; let i = index; let odd = odd" [class]="item">
+    {{ item }} {{ i }} {{ odd }}
+  </p>
+
+  <p>------------------</p>
+
+  <p
+    *ngFor="let item of colors; let i = index; let odd = odd"
+    [class.bgGray]="odd"
+  >
+    {{ item }} {{ i }} {{ odd }}
+  </p>
+
+  <p>------------------</p>
+
+  <p
+    *ngFor="let item of colors; let i = index; let odd = odd"
+    [class.purple]="i % 3 === 0"
+    [class.orange]="i % 3 === 1"
+    [class.cyan]="i % 3 === 2"
+  >
+    {{ item }} {{ i }} {{ odd }}
+  </p>
+
+  <p>------------------</p>
+
+  <p
+    *ngFor="let item of colors; let i = index; let odd = odd"
+    [ngClass]="{
+      cyan: i % 3 === 0,
+      purple: i % 3 === 1,
+      orange: i % 3 === 2
+    }"
+  >
+    {{ item }} {{ i }} {{ odd }}
+  </p>
+
+  <!-- 
+  *ngFor渲染对象数组的性能问题
+  引用类型的地址改变，会导致使用这个对象的dom整体刷新（简单数据类型的数组，不会有这种问题）
+  使用trackBy特性，找到发生变化的元素，局部刷新，提升渲染性能
+  *ngFor="let item of prop: { [propName]: any }[]; trackBy: trackById"
+ -->
+
+  <button (click)="reload()">重新获取数据</button>
+  <ul>
+    <li *ngFor="let item of people; trackBy: trackById">{{ item.name }}</li>
+  </ul>
+</div>

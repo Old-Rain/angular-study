@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BaseCComponent } from './base-c.component';
+import { CTodolistBodyComponent } from './c-todolist-body.component';
 
-describe('BaseCComponent', () => {
-  let component: BaseCComponent;
-  let fixture: ComponentFixture<BaseCComponent>;
+describe('CTodolistBodyComponent', () => {
+  let component: CTodolistBodyComponent;
+  let fixture: ComponentFixture<CTodolistBodyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseCComponent ]
+      declarations: [ CTodolistBodyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BaseCComponent);
+    fixture = TestBed.createComponent(CTodolistBodyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

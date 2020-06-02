@@ -1,0 +1,9 @@
+<ul>
+  <li
+    *ngFor="let item of tdData; let i = index; trackBy: tdTrackByName"
+    (click)="tdStatusChange($event, i)"
+  >
+    <span class="{{ item.status ? 'done' : 'undone' }}">{{ item.name }}</span
+    >&nbsp;<u style="color: blue;" (click)="tdDelete($event, i)">x</u>
+  </li>
+</ul>

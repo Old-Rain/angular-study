@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+
 import { ABaseComponent } from './a-base/a-base.component'
-import { BaseComponent } from './base/base.component';
-import { BaseCComponent } from './base-c/base-c.component'
 
 @NgModule({
-  declarations: [BaseComponent, ABaseComponent, BaseCComponent],
-  imports: [CommonModule],
-  exports: [BaseComponent, ABaseComponent, BaseCComponent],
+  declarations: [ABaseComponent],
+  imports: [CommonModule, FormsModule],
+  exports: [ABaseComponent],
 })
 export class ABaseModule {}

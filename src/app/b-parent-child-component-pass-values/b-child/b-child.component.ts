@@ -7,11 +7,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
-  selector: 'app-child',
-  templateUrl: './child.component.html',
-  styleUrls: ['./child.component.scss'],
+  selector: 'app-b-child',
+  templateUrl: './b-child.component.html',
+  styleUrls: ['./b-child.component.scss'],
 })
-export class ChildComponent implements OnInit {
+export class BChildComponent implements OnInit {
   /**
    * 2.父向子传值
    * 子组件使用Input装饰器装饰一个属性，表示向外暴露一个属性
@@ -35,8 +35,7 @@ export class ChildComponent implements OnInit {
     e.price = '1000'
     this.giveMoney.emit(e)
   }
-
+  
   constructor() {}
-
   ngOnInit(): void {}
 }
