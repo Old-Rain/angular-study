@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 
+interface TdDataItem {
+  name: string
+  status: boolean
+}
+
 @Component({
   selector: 'app-c-todolist',
   templateUrl: './c-todolist.component.html',
@@ -9,7 +14,7 @@ export class CTodolistComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
 
-  tdData = [
+  tdData: Array<TdDataItem> = [
     { name: '吃饭', status: true },
     { name: '睡觉', status: true },
     { name: '学Angular', status: false },
@@ -28,13 +33,24 @@ export class CTodolistComponent implements OnInit {
     this.tdData.splice(0, 0, { name: tdVal, status: false })
   }
 
-  change({ index }) {
-    console.log(index)
+  event({ index__, type__ }) {
+    switch (type__) {
+      case 'change':
+        return this.change(index__)
 
-    this.tdData[index].status = !this.tdData[index].status
+      case 'delete':
+        return this.delete(index__)
+
+      default:
+        break
+    }
   }
 
-  delete({ index }) {
-    this.tdData.splice(index, 1)
+  change(i: number) {
+    this.tdData[i].status = !this.tdData[i].status
+  }
+
+  delete(i: number) {
+    this.tdData.splice(i, 1)
   }
 }

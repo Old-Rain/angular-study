@@ -6,7 +6,6 @@
   ></app-c-todolist-header>
   <app-c-todolist-body
     [tdData]="tdData"
-    (change)="change($event)"
-    (delete)="delete($event)"
+    (event)="event($event)"
   ></app-c-todolist-body>
 </div>
