@@ -18,14 +18,13 @@ export class CTodolistHeaderComponent implements OnInit {
   add = new EventEmitter()
 
   tdAdd(e) {
-    let tdVal = this.tdVal.trim()
-    if (!tdVal) {
+    if (!this.tdVal.trim()) {
       return
     }
 
-    e.tdVal = tdVal
+    e.tdVal = this.tdVal
     this.add.emit(e)
-    
+
     setTimeout(() => {
       if (this.isSuccess) {
         this.tdVal = ''

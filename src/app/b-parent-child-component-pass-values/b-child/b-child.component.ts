@@ -22,6 +22,7 @@ export class BChildComponent implements OnInit {
    */
   @Input()
   skill
+  
   @Input()
   msi
 

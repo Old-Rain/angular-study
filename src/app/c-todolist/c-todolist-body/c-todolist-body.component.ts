@@ -1,11 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { CTodolistService } from '../c-todolist.service'
-
-// 数据源格式
-interface TdDataItem {
-  name: string
-  status: boolean
-}
+import { TdDataItem } from '../c-todolist.intreface'
 
 // 事件对象
 interface EventObj {
@@ -36,6 +31,7 @@ export class CTodolistBodyComponent implements OnInit {
 
   @Output()
   event: EventEmitter<EventHasParams> = new EventEmitter()
+
   tdStatusChange(e: EventObj, index: number, type: string) {
     e.stopPropagation()
 
