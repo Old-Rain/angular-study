@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core'
 })
 export class ABaseComponent implements OnInit {
   constructor() {}
-
   ngOnInit(): void {}
 
   // 第一天

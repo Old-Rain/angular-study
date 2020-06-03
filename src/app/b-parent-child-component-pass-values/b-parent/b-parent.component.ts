@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./b-parent.component.scss'],
 })
 export class BParentComponent implements OnInit {
+  constructor() {}
+  ngOnInit(): void {}
+  
   // 第三天
   // 父向子传值
   parentData = '我若不黑化，谁替我变强'
@@ -16,7 +19,4 @@ export class BParentComponent implements OnInit {
   howMuch(e) {
     this.childData = e.price
   }
-  
-  constructor() {}
-  ngOnInit(): void {}
 }
