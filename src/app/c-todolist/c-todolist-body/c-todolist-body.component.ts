@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { CTodolistService } from '../c-todolist.service'
 
 // 数据源格式
 interface TdDataItem {
@@ -24,7 +25,7 @@ interface EventHasParams {
   styleUrls: ['./c-todolist-body.component.scss'],
 })
 export class CTodolistBodyComponent implements OnInit {
-  constructor() {}
+  constructor(private tdService: CTodolistService) {}
   ngOnInit(): void {}
 
   @Input()

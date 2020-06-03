@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { CTodolistService } from '../c-todolist.service'
 
 interface TdDataItem {
   name: string
@@ -9,9 +10,11 @@ interface TdDataItem {
   selector: 'app-c-todolist',
   templateUrl: './c-todolist.component.html',
   styleUrls: ['./c-todolist.component.scss'],
+  providers: [CTodolistService],
 })
 export class CTodolistComponent implements OnInit {
-  constructor() {}
+  // private tdService?: CTodolistService = new CTodolistService()
+  constructor(private tdService?: CTodolistService) {}
   ngOnInit(): void {}
 
   tdData: Array<TdDataItem> = [
@@ -24,6 +27,8 @@ export class CTodolistComponent implements OnInit {
   isSuccess: boolean = false
 
   add({ tdVal }) {
+    this.tdService.testService()
+
     let has = this.tdData.find((item) => item.name === tdVal)
     if (!!has) {
       return (this.isSuccess = false)
