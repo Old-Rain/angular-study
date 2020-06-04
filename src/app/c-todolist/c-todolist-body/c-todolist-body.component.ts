@@ -8,10 +8,9 @@ interface EventObj {
 }
 
 // 携带参数的事件对象
-interface EventHasParams {
+interface List {
   index__: number
   type__: string
-  [propName: string]: any
 }
 
 @Component({
@@ -30,16 +29,16 @@ export class CTodolistBodyComponent implements OnInit {
   }
 
   @Output()
-  event: EventEmitter<EventHasParams> = new EventEmitter()
+  event: EventEmitter<List> = new EventEmitter()
 
-  tdStatusChange(e: EventObj, index: number, type: string) {
+  tdStatusChange(e, index: number, type: string) {
     e.stopPropagation()
 
-    const e__: EventHasParams = {
-      ...e,
+    const e__: List = {
       index__: index,
       type__: type,
     }
+    
     this.event.emit(e__)
   }
 }

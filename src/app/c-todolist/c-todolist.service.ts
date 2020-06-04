@@ -34,35 +34,46 @@
 // 如果使用字面量的写法 private service: Service = new Service()，可以无视提供商是否注册，但是各个服务都是独立的服务
 
 import { Injectable } from '@angular/core'
-import { TdDataItem } from './c-todolist.intreface'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
+
+import { TdDataItem, TdDataRes } from './c-todolist.intreface'
 
 @Injectable()
 export class CTodolistService {
+  constructor(private http: HttpClient) {}
   tdData: Array<TdDataItem> = []
 
-  getTdData(): Array<TdDataItem> {
-    const tdData = [
-      { name: '吃饭', status: true },
-      { name: '睡觉', status: true },
-      { name: '学Angular', status: false },
-      { name: '学ts', status: false },
-      { name: '学Deno', status: true },
-    ]
-    this.tdData = tdData
-    return tdData
+  getTdData() {
+    // const tdData = [
+    //   { name: '吃饭', status: true },
+    //   { name: '睡觉', status: true },
+    //   { name: '学Angular', status: false },
+    //   { name: '学ts', status: false },
+    //   { name: '学Deno', status: true },
+    // ]
+    // this.tdData = tdData
+    // return tdData
+
+    return this.http.get<TdDataRes<TdDataItem>>('http://localhost:2200/tdData')
   }
 
-  add({ tdVal }) {
-    let has = this.tdData.find((item) => item.name === tdVal)
-    if (!!has) {
-      return false
-    }
+  add({ tdVal: name }) {
+    // let has = this.tdData.find((item) => item.name === tdVal)
+    // if (!!has) {
+    //   return false
+    // }
 
-    this.tdData.splice(0, 0, { name: tdVal, status: false })
-    return true
+    // this.tdData.splice(0, 0, { name: tdVal, status: false })
+    // return true
+
+    return this.http.post<TdDataRes<TdDataItem>>(
+      'http://localhost:2200/tdData',
+      { name }
+    )
   }
 
-  event({ index__, type__ }) {
+  event({ index__, type__ }): Observable<TdDataRes<TdDataItem>> {
     switch (type__) {
       case 'change':
         return this.change(index__)
@@ -76,10 +87,19 @@ export class CTodolistService {
   }
 
   change(i: number) {
-    this.tdData[i].status = !this.tdData[i].status
+    // this.tdData[i].status = !this.tdData[i].status
+
+    return this.http.put<TdDataRes<TdDataItem>>(
+      'http://localhost:2200/tdData',
+      { i }
+    )
   }
 
   delete(i: number) {
-    this.tdData.splice(i, 1)
+    // this.tdData.splice(i, 1)
+
+    return this.http.delete<TdDataRes<TdDataItem>>(
+      `http://localhost:2200/tdData/${i}`
+    )
   }
 }

@@ -9,26 +9,27 @@ export class CTodolistHeaderComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {}
 
-  tdVal = ''
+  // @Input()
+  // isSuccess
 
   @Input()
-  isSuccess
+  tdVal: string
 
   @Output()
   add = new EventEmitter()
 
   tdAdd(e) {
-    if (!this.tdVal.trim()) {
+    if (!this.tdVal || !this.tdVal.trim()) {
       return
     }
 
     e.tdVal = this.tdVal
     this.add.emit(e)
 
-    setTimeout(() => {
-      if (this.isSuccess) {
-        this.tdVal = ''
-      }
-    })
+    // setTimeout(() => {
+    //   if (this.isSuccess) {
+    //     this.tdVal = ''
+    //   }
+    // })
   }
 }
