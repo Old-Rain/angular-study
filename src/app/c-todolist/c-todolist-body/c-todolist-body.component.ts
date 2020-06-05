@@ -2,11 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { CTodolistService } from '../c-todolist.service'
 import { TdDataItem } from '../c-todolist.intreface'
 
-// 事件对象
-interface EventObj {
-  stopPropagation: Function
-}
-
 // 携带参数的事件对象
 interface List {
   index__: number
