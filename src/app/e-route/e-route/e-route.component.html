@@ -1,0 +1,39 @@
+<div class="wrap">
+  <h2>e-route</h2>
+  <a
+    routerLink="/home"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >首页</a
+  >
+  <a routerLink="/about" routerLinkActive="active">关于</a>
+
+  <ul>
+    <li>
+      <a
+        routerLink="/sword/0"
+        [queryParams]="{ id: '0' }"
+        routerLinkActive="active"
+        >渊虹</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/sword/1"
+        [queryParams]="{ id: '1' }"
+        routerLinkActive="active"
+        >水寒</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/sword/2"
+        [queryParams]="{ id: '2' }"
+        routerLinkActive="active"
+        >凌虚</a
+      >
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>

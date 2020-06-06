@@ -27,13 +27,13 @@ export class CTodolistComponent implements OnInit {
     this.tdService.getTdData().subscribe(
       (res: TdDataRes<TdDataItem>) => {
         if (res.code !== '0000') {
-          return alert(res.message)
+          return console.log(res.message)
         }
 
         this.tdData = [...res.data]
       },
       ({ error }) => {
-        return alert(error.message)
+        return console.log(error.message)
       }
     )
   }
@@ -43,14 +43,14 @@ export class CTodolistComponent implements OnInit {
     this.tdService.add(e).subscribe(
       (res: TdDataRes<TdDataItem>) => {
         if (res.code !== '0000') {
-          return alert(res.message)
+          return console.log(res.message)
         }
 
         this.init()
         this.tdVal = ''
       },
       ({ error }) => {
-        return alert(error.message)
+        return console.log(error.message)
       }
     )
   }
@@ -60,13 +60,13 @@ export class CTodolistComponent implements OnInit {
     this.tdService.event(e).subscribe(
       (res: TdDataRes<TdDataItem>) => {
         if (res.code !== '0000') {
-          return alert(res.message)
+          return console.log(res.message)
         }
 
         this.init()
       },
       ({ error }) => {
-        return alert(error.message)
+        return console.log(error.message)
       }
     )
   }

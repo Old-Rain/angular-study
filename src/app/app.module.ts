@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 
-import { AppRoutingModule } from './app-routing.module'
+// import { AppRoutingModule } from './app-routing.module'
 
 import { AppComponent } from './app.component'
 import { ABaseModule } from './a-base/a-base.module'
 import { BParentChildComponentPassValuesModule } from './b-parent-child-component-pass-values/b-parent-child-component-pass-values.module'
 import { CTodolistModule } from './c-todolist/c-todolist.module'
 import { DHttpClientModule } from './d-http-client/d-http-client.module'
+import { ERouteModule } from './e-route/e-route.module'
 
 @NgModule({
   // 该模块所拥有的的组件
@@ -16,11 +17,12 @@ import { DHttpClientModule } from './d-http-client/d-http-client.module'
   // 该模块所依赖的模块
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     ABaseModule,
     BParentChildComponentPassValuesModule,
     CTodolistModule,
     DHttpClientModule,
+    ERouteModule,
   ],
 
   // 该模块所拥有的的服务提供商
