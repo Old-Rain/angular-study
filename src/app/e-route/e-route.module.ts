@@ -1,13 +1,13 @@
 /**
  * 第六天
- * 路由
+ * 一、路由基本用法
  */
 
-// 1.在index.html的head里面创建一个基础路径<base href="/">（构建项目时，脚手架已经完成了）
+// 1-1.在index.html的head里面创建一个基础路径<base href="/">（构建项目时，脚手架已经完成了）
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 
-// 2. 在项目模块中导入路由模块
+// 1-2. 在项目模块中导入路由模块
 import { RouterModule, Routes } from '@angular/router'
 
 import { ERouteComponent } from './e-route/e-route.component'
@@ -18,7 +18,7 @@ import { ERouteSwordComponent } from './e-route-sword/e-route-sword.component'
 import { ERouteChild1Component } from './e-route-child1/e-route-child1.component'
 import { ERouteChild2Component } from './e-route-child2/e-route-child2.component'
 
-// 3.配置路由
+// 1-3.配置路由
 const routes: Routes = [
   // 路由重定向
   {
@@ -30,7 +30,7 @@ const routes: Routes = [
     path: 'home', // 基础路径上已经带“/”了，所以这里的path不再需要（只有配置路由的时候不带“/”，其他情况下都要带上）
     component: ERouteHomeComponent,
 
-    // 子路由：见child页面
+    // 三、子路由：见child页面
     children: [
       // 子路由默认路由，把path置空
       // {
@@ -52,7 +52,7 @@ const routes: Routes = [
     component: ERouteAboutComponent,
   },
 
-  // 路由参数：见sword页面
+  // 二、路由参数：见sword页面
   {
     path: 'sword/:id',
     component: ERouteSwordComponent,
@@ -77,7 +77,7 @@ const routes: Routes = [
     ERouteChild2Component,
   ],
 
-  // 4.RouterModule.forRoot(routes)会返回真正的路由模块，添加到imports
+  // 1-4.RouterModule.forRoot(routes)会返回真正的路由模块，添加到imports
   /**
    * forRoot的问题说明：服务应该是单列的，某些场景下会造成服务多次注册，破坏服务的单列特性
    * 比如：路由懒加载的情况
@@ -89,6 +89,7 @@ const routes: Routes = [
 })
 export class ERouteModule {}
 
+// 1-5. & 四、高亮样式
 /**
  * <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">首页</a>
  * routerLink即为路由地址
