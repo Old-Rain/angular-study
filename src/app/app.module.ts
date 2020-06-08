@@ -9,6 +9,7 @@ import { BParentChildComponentPassValuesModule } from './b-parent-child-componen
 import { CTodolistModule } from './c-todolist/c-todolist.module'
 import { DHttpClientModule } from './d-http-client/d-http-client.module'
 import { ERouteModule } from './e-route/e-route.module'
+import { FFormModule } from './f-form/f-form.module'
 
 @NgModule({
   // 该模块所拥有的的组件
@@ -23,6 +24,7 @@ import { ERouteModule } from './e-route/e-route.module'
     CTodolistModule,
     DHttpClientModule,
     ERouteModule,
+    FFormModule,
   ],
 
   // 该模块所拥有的的服务提供商

@@ -1,0 +1,15 @@
+<div class="wrap">
+  <h2>f-form</h2>
+  <p>a.设置与获取</p>
+  用户<input [formControl]="user" />
+  <p>{{ user.value }}</p>
+  <button (click)="setInputValue()">学完了</button>
+  <br />
+  <p>b.内置校验</p>
+  密码<input [formControl]="pass" />
+  <p *ngIf="pass.errors?.required">密码必填</p>
+  <p *ngIf="pass.errors?.minlength">
+    最低限度为{{ pass.errors?.minlength.requiredLength }}
+  </p>
+  <br />
+</div>
