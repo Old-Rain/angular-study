@@ -4,12 +4,42 @@
   用户<input [formControl]="user" />
   <p>{{ user.value }}</p>
   <button (click)="setInputValue()">学完了</button>
+  <p>--------------------------------------------------------------</p>
+  <p>--------------------------------------------------------------</p>
   <br />
   <p>b.内置校验</p>
   密码<input [formControl]="pass" />
-  <p *ngIf="pass.errors?.required">密码必填</p>
-  <p *ngIf="pass.errors?.minlength">
+  <p *ngIf="pass.dirty && pass.errors?.required">密码必填</p>
+  <p *ngIf="pass.dirty && pass.errors?.minlength">
     最低限度为{{ pass.errors?.minlength.requiredLength }}
   </p>
+  <p *ngIf="pass.dirty && pass.hasError('pattern')">
+    自定义规则应符合{{ pass.errors?.pattern.requiredPattern }}
+  </p>
+  <p>--------------------------------------------------------------</p>
+  <p>--------------------------------------------------------------</p>
   <br />
+  <p>c.自定义验证</p>
+  邮箱<input [formControl]="email" />
+  <p *ngIf="email.dirty && email.hasError('emailError')">
+    邮箱规则{{ email.errors?.emailError }}
+  </p>
+  <p>--------------------------------------------------------------</p>
+  <p>--------------------------------------------------------------</p>
+  <br />
+  <p>d.管理所有的表单控件</p>
+  <form [formGroup]="login" (ngSubmit)="submit()">
+    <p>账号 <input formControlName="_name" /></p>
+    <p>密码 <input formControlName="_pass" /></p>
+    <button>提交</button>
+  </form>
+  <p>--------------------------------------------------------------</p>
+  <p>--------------------------------------------------------------</p>
+  <br />
+  <p>e.响应式表单简化写法</p>
+  <form [formGroup]="_login" (ngSubmit)="_submit()">
+    <p>账号 <input formControlName="_name" /></p>
+    <p>密码 <input formControlName="_pass" /></p>
+    <button>提交</button>
+  </form>
 </div>
